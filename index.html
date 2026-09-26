@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EUPHO ATELIER — Dark Luxury & Fashion</title>
+    <title>EUPHO ATELIER — Vintage & Curated Archive</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ==========================================================================
+           VINTAGE DIGICAM & LO-FI PALETTE
+           ========================================================================== */
         :root {
-            --bg-color: #0d0b0c;
-            --card-bg: #161315;
-            --accent-gold: #d4af37;
-            --accent-peach: #e8b4a0;
-            --text-primary: #f5f0eb;
-            --text-secondary: #a39b98;
+            --bg-color: #1c1817;           /* إسبريسو خشب كلاسيكي - Deep Warm Espresso */
+            --card-bg: #26211f;           /* كرت بستايل ألبوم القديم */
+            --accent-peach: #e3a88c;       /* خوخي ناعم - Soft Peach Glow */
+            --accent-taupe: #a6938a;       /* توب دافئ - Vintage Taupe */
+            --accent-sage: #909878;        /* زيتوني كلاسيكي - Muted Sage */
+            --text-primary: #f0eae1;       /* أبيض كريمي عتيق - Vintage Cream */
+            --text-muted: #b8ac9f;
+            --border-line: rgba(227, 168, 140, 0.18);
+            
+            --font-mono: 'Courier Prime', monospace;
             --font-serif: 'Playfair Display', serif;
-            --font-cinzel: 'Cinzel', serif;
             --font-arabic: 'Tajawal', sans-serif;
         }
 
@@ -31,61 +39,61 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             font-family: var(--font-arabic);
-            overflow-x: hidden;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Film Grain Effect Overlay */
-        .film-grain {
+        /* Continuous Film Grain Effect */
+        .film-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 999;
-            opacity: 0.04;
+            opacity: 0.06;
             background: url('https://upload.wikimedia.org/wikipedia/commons/7/76/Noise.png');
         }
 
-        /* Header / Navbar */
+        /* HEADER & BRANDING */
         header {
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
-            border-bottom: 1px solid rgba(232, 180, 160, 0.1);
-            position: sticky;
-            top: 0;
-            background: rgba(13, 11, 12, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            border-bottom: 1px dashed var(--border-line);
+            background: rgba(28, 24, 23, 0.95);
+            backdrop-filter: blur(5px);
+            position: sticky; top: 0; z-index: 100;
         }
 
-        .logo-container {
+        .brand-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            text-decoration: none;
         }
 
-        .cat-logo-svg {
-            width: 32px;
-            height: 32px;
+        .cat-lineart {
+            width: 28px;
+            height: 28px;
             stroke: var(--accent-peach);
             fill: none;
-            stroke-width: 1.5;
+            stroke-width: 1.6;
         }
 
-        .brand-title {
-            font-family: var(--font-cinzel);
-            font-size: 1.4rem;
-            letter-spacing: 3px;
+        .brand-name {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
             color: var(--text-primary);
-            text-transform: uppercase;
+            font-weight: 700;
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--accent-taupe);
             text-decoration: none;
-            margin-right: 2rem;
-            font-size: 0.95rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-right: 1.5rem;
             transition: 0.3s;
         }
 
@@ -93,338 +101,351 @@
             color: var(--accent-peach);
         }
 
-        /* Hero Section */
+        /* HERO SECTION */
         .hero {
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 5rem 5% 4rem 5%;
             text-align: center;
-            padding: 0 5%;
-            background: radial-gradient(circle at center, rgba(30, 24, 27, 0.8) 0%, var(--bg-color) 70%);
-            position: relative;
+            background: radial-gradient(circle at center, rgba(38, 33, 31, 0.7) 0%, var(--bg-color) 80%);
+            border-bottom: 1px solid var(--border-line);
         }
 
-        .hero-tag {
-            font-family: var(--font-cinzel);
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--accent-peach);
-            margin-bottom: 1.5rem;
+        .vintage-stamp {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-sage);
+            border: 1px solid var(--accent-sage);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .hero-title {
+        .hero h1 {
             font-family: var(--font-serif);
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 400;
-            max-width: 800px;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            margin-bottom: 1rem;
             color: var(--text-primary);
+            font-style: italic;
         }
 
-        .hero-desc {
-            color: var(--text-secondary);
-            max-width: 550px;
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
+        .hero p {
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.05rem;
             font-weight: 300;
         }
 
-        .btn-cinematic {
+        .btn-vintage {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--accent-peach);
-            font-family: var(--font-cinzel);
-            letter-spacing: 2px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(232, 180, 160, 0.1);
-            cursor: pointer;
-        }
-
-        .btn-cinematic:hover {
-            background: var(--accent-peach);
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             color: var(--bg-color);
-            box-shadow: 0 0 25px rgba(232, 180, 160, 0.4);
+            background-color: var(--accent-peach);
+            padding: 0.8rem 1.8rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
         }
 
-        /* Drop Countdown Section */
-        .countdown-section {
-            padding: 5rem 5%;
+        .btn-vintage:hover {
+            background-color: var(--text-primary);
+            box-shadow: 0 0 15px rgba(227, 168, 140, 0.3);
+        }
+
+        /* COUNTDOWN / NEXT DROP */
+        .drop-section {
+            padding: 3rem 5%;
             background-color: var(--card-bg);
+            border-bottom: 1px dashed var(--border-line);
             text-align: center;
-            border-top: 1px solid rgba(232, 180, 160, 0.05);
-            border-bottom: 1px solid rgba(232, 180, 160, 0.05);
         }
 
-        .section-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
+        .drop-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
             color: var(--accent-peach);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
         }
 
-        .timer-grid {
+        .timer-row {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
         }
 
-        .timer-box {
-            background: rgba(13, 11, 12, 0.6);
-            padding: 1.5rem 2rem;
-            border: 1px solid rgba(232, 180, 160, 0.15);
-            min-width: 100px;
+        .timer-unit {
+            font-family: var(--font-mono);
+            background: var(--bg-color);
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--border-line);
+            min-width: 80px;
         }
 
-        .timer-num {
-            font-family: var(--font-cinzel);
-            font-size: 2.5rem;
+        .timer-val {
+            font-size: 1.8rem;
             color: var(--text-primary);
             display: block;
         }
 
-        .timer-label {
+        .timer-lbl {
+            font-size: 0.7rem;
+            color: var(--accent-taupe);
+        }
+
+        /* LOOKBOOK / CATALOGUE GRID */
+        .archive-section {
+            padding: 4rem 5%;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-        }
-
-        /* Lookbook Grid Section */
-        .lookbook-section {
-            padding: 6rem 5%;
-        }
-
-        .lookbook-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .look-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(232, 180, 160, 0.08);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease;
-        }
-
-        .look-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .look-img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            filter: grayscale(20%) contrast(105%);
-            transition: filter 0.4s ease;
-        }
-
-        .look-card:hover .look-img {
-            filter: grayscale(0%);
-        }
-
-        .look-info {
-            padding: 1.8rem;
-            position: relative;
-        }
-
-        .look-title {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
+            color: var(--accent-taupe);
+            text-align: center;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .look-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
         }
 
-        .look-items-list {
+        .vintage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .photo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-line);
+            padding: 12px;
+            transition: 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-peach);
+        }
+
+        .img-frame {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            background-color: #120f0e;
+        }
+
+        .img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(15%) contrast(95%) brightness(95%);
+            transition: filter 0.4s ease;
+        }
+
+        .photo-card:hover .img-frame img {
+            filter: sepia(0%) contrast(100%) brightness(100%);
+        }
+
+        .card-details {
+            padding: 1rem 0.5rem 0.5rem 0.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-taupe);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .items-tag-list {
             list-style: none;
-            padding: 0;
-            margin-bottom: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            border-top: 1px dashed rgba(255,255,255,0.08);
+            padding-top: 0.8rem;
         }
 
-        .look-items-list li {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .items-tag-list li {
+            margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 0.4rem;
+            gap: 6px;
         }
 
-        .look-items-list li::before {
+        .items-tag-list li::before {
             content: '🐾';
-            font-size: 0.7rem;
-            opacity: 0.6;
+            font-size: 0.65rem;
+            opacity: 0.7;
         }
 
-        /* Footer */
+        .order-whatsapp-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--accent-peach);
+            color: var(--accent-peach);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .order-whatsapp-btn:hover {
+            background: var(--accent-peach);
+            color: var(--bg-color);
+        }
+
+        /* FOOTER */
         footer {
             padding: 3rem 5%;
             text-align: center;
-            border-top: 1px solid rgba(232, 180, 160, 0.1);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .footer-cat-art {
-            margin-bottom: 1rem;
-            opacity: 0.5;
+            border-top: 1px dashed var(--border-line);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-taupe);
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.3rem; }
-            .timer-grid { gap: 0.8rem; }
-            .timer-box { padding: 1rem; min-width: 70px; }
-            .timer-num { font-size: 1.6rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .timer-row { gap: 0.6rem; }
+            .timer-unit { min-width: 65px; padding: 0.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Film Grain Background Filter -->
-    <div class="film-grain"></div>
+    <div class="film-overlay"></div>
 
-    <!-- Header / Nav -->
+    <!-- Header -->
     <header>
-        <div class="logo-container">
-            <!-- Minimalist Line-art Cat Icon -->
-            <svg class="cat-logo-svg" viewBox="0 0 24 24">
-                <path d="M12 5c-3.5 0-6 2.5-6 6 0 4 3.5 8 6 10 2.5-2 6-6 6-10 0-3.5-2.5-6-6-6z" stroke-dasharray="0"/>
+        <a href="#" class="brand-logo">
+            <!-- Minimal Line Art Cat -->
+            <svg class="cat-lineart" viewBox="0 0 24 24">
+                <path d="M12 5c-3.5 0-6 2.5-6 6 0 4 3.5 8 6 10 2.5-2 6-6 6-10 0-3.5-2.5-6-6-6z"/>
                 <path d="M6 8L3 4v5" />
                 <path d="M18 8l3-4v5" />
                 <circle cx="9" cy="11" r="1" fill="currentColor"/>
                 <circle cx="15" cy="11" r="1" fill="currentColor"/>
-                <path d="M11 14c.5.5 1.5.5 2 0" />
             </svg>
-            <span class="brand-title">EUPHO ATELIER</span>
-        </div>
+            <span class="brand-name">EUPHO ATELIER</span>
+        </a>
         <nav>
-            <a href="#lookbook">Lookbook</a>
-            <a href="#drop">Next Drop</a>
-            <a href="#contact">Contact</a>
+            <a href="#lookbook">[Lookbook]</a>
+            <a href="#drop">[Next Drop]</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <span class="hero-tag">Haute Couture & Curated Atelier</span>
-        <h1 class="hero-title">Where Timeless Elegance Meets Moody Whimsy</h1>
-        <p class="hero-desc">تصاميم حصرية تُغزل بحس فني رفيع وشغف استثنائي. قطعك الفاخرة المصنوعة يدوياً بحب وعناية.</p>
-        <a href="#lookbook" class="btn-cinematic">
-            <span>استكشفي الإطلالات</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </a>
+        <span class="vintage-stamp">Est. 2026 • Curated Archive</span>
+        <h1>Curated vintage treasures with a story to tell.</h1>
+        <p>قطع ملابس وإكسسوارات منتقاة بحب، بلمسة كلاسيكية هادئة وشغف مستوحى من القطة Eupho. قطع حصرية لكل قطعة حكايتها.</p>
+        <a href="#lookbook" class="btn-vintage">استكشفي المجموعات 🐾</a>
     </section>
 
-    <!-- Drop Countdown Section -->
-    <section class="countdown-section" id="drop">
-        <div class="section-header">
-            <svg class="cat-logo-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><path d="M6 8L3 4v5M18 8l3-4v5M12 6c-3 0-5 2-5 5s2 6 5 8c3-2 5-5 5-8s-2-5-5-5z"/></svg>
-            <h2 class="section-title">Next Drop Countdown</h2>
-        </div>
-        <p style="color: var(--text-secondary); font-size: 0.95rem;">استعدي لإطلاق المجموعة الحصرية الجديدة لـ Eupho Atelier</p>
-        
-        <div class="timer-grid">
-            <div class="timer-box">
-                <span class="timer-num" id="days">04</span>
-                <span class="timer-label">أيام</span>
+    <!-- Next Drop Timer -->
+    <section class="drop-section" id="drop">
+        <div class="drop-title">NEXT ARCHIVE DROP IN:</div>
+        <div class="timer-row">
+            <div class="timer-unit">
+                <span class="timer-val" id="d">03</span>
+                <span class="timer-lbl">DAYS</span>
             </div>
-            <div class="timer-box">
-                <span class="timer-num" id="hours">18</span>
-                <span class="timer-label">ساعات</span>
+            <div class="timer-unit">
+                <span class="timer-val" id="h">14</span>
+                <span class="timer-lbl">HOURS</span>
             </div>
-            <div class="timer-box">
-                <span class="timer-num" id="minutes">42</span>
-                <span class="timer-label">دقائق</span>
-            </div>
-            <div class="timer-box">
-                <span class="timer-num" id="seconds">09</span>
-                <span class="timer-label">ثواني</span>
+            <div class="timer-unit">
+                <span class="timer-val" id="m">28</span>
+                <span class="timer-lbl">MINS</span>
             </div>
         </div>
     </section>
 
-    <!-- Lookbook Section -->
-    <section class="lookbook-section" id="lookbook">
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <span class="hero-tag">Editorial Selection</span>
-            <h2 class="section-title">The Interactive Lookbook</h2>
-        </div>
+    <!-- Interactive Lookbook / Archive Grid -->
+    <section class="archive-section" id="lookbook">
+        <span class="section-tag">// SELECTED LOOKS & PIECES</span>
+        <h2 class="section-title">The Vintage Archive</h2>
 
-        <div class="lookbook-grid">
+        <div class="vintage-grid">
+            
             <!-- Look 1 -->
-            <div class="look-card">
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80" class="look-img" alt="Look 1">
-                <div class="look-info">
-                    <h3 class="look-title">Look I — The Velvet Nocturne</h3>
-                    <p class="look-desc">إطلالة فاخرة مستوحاة من هدوء الليل وجمال الأقمشة الإسبيرسو الدافئة.</p>
-                    <ul class="look-items-list">
-                        <li>جاكيت قطني مخملي مع تطريز دقيق</li>
-                        <li>حقيبة يد جلدية صغيرة منسوجة</li>
-                        <li>ساش حريري بأحرف عربية مطرزة</li>
+            <div class="photo-card">
+                <div class="img-frame">
+                    <!-- استبدلي هذا الرابط برابط صورتك الخاص مستقبلاً -->
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80" alt="Look 1">
+                </div>
+                <div class="card-details">
+                    <h3 class="card-title">Look #01 — Velvet & Coffee</h3>
+                    <div class="card-meta">
+                        <span>3 Pieces Set</span>
+                        <span>380 DH</span>
+                    </div>
+                    <ul class="items-tag-list">
+                        <li>جاكيت مخملي بني دافئ Vintage</li>
+                        <li>حقيبة يد صغيرة بستايل التسعينات</li>
                     </ul>
-                    <button class="btn-cinematic" style="width: 100%; justify-content: center; padding: 0.8rem;">اطلبي الإطلالة كاملة 🐾</button>
+                    <a href="https://wa.me/212600000000?text=Hello%20Eupho%20Atelier,%20I'm%20interested%20in%20Look%2001" target="_blank" class="order-whatsapp-btn">
+                        طلب الإطلالة عبر واتساب
+                    </a>
                 </div>
             </div>
 
             <!-- Look 2 -->
-            <div class="look-card">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" class="look-img" alt="Look 2">
-                <div class="look-info">
-                    <h3 class="look-title">Look II — Vintage Silk Silhouette</h3>
-                    <p class="look-desc">تنسيق كلاسيكي بقصّات عصرية تعكس الجمالية المستوحاة من صور الكاميرات القديمة.</p>
-                    <ul class="look-items-list">
-                        <li>فستان حريري هادئ بلون الخوخ الداكن</li>
-                        <li>إكسسوار ناعم بشعار Eupho الذهبي</li>
+            <div class="photo-card">
+                <div class="img-frame">
+                    <!-- استبدلي هذا الرابط برابط صورتك الخاص مستقبلاً -->
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Look 2">
+                </div>
+                <div class="card-details">
+                    <h3 class="card-title">Look #02 — Peach Silk Silhouette</h3>
+                    <div class="card-meta">
+                        <span>Single Piece</span>
+                        <span>250 DH</span>
+                    </div>
+                    <ul class="items-tag-list">
+                        <li>فستان حريري خفيف بلون الخوخي العتيق</li>
+                        <li>إكسسوار ناعم مستوحى من Eupho</li>
                     </ul>
-                    <button class="btn-cinematic" style="width: 100%; justify-content: center; padding: 0.8rem;">اطلبي الإطلالة كاملة 🐾</button>
+                    <a href="https://wa.me/212600000000?text=Hello%20Eupho%20Atelier,%20I'm%20interested%20in%20Look%2002" target="_blank" class="order-whatsapp-btn">
+                        طلب الإطلالة عبر واتساب
+                    </a>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-cat-art">
-            🐾 ─── EUPHO ATELIER ─── 🐾
-        </div>
-        <p>© 2026 EUPHO ATELIER. Crafted with passion & love for Eupho.</p>
+        <p>🐾 EUPHO ATELIER — Curated with love for Eupho.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">Designed for Vintage & Film Aesthetic Lovers.</p>
     </footer>
 
-    <!-- Countdown Script -->
-    <script>
-        // Simple mock countdown animation
-        let sec = 59;
-        setInterval(() => {
-            document.getElementById('seconds').innerText = sec < 10 ? '0' + sec : sec;
-            sec = sec > 0 ? sec - 1 : 59;
-        }, 1000);
-    </script>
 </body>
 </html>
