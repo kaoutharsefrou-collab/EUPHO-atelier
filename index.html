@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eupho Atelier | Curated Vintage & Modern Treasures</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Tajawal:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ==========================================================================
+           BRAND COLOR PALETTE SYSTEM
+           ========================================================================== */
+        :root {
+            --bg-base: #d9d8d0;        /* رمادي كريمي ناعم - Soft Cream Gray */
+            --text-dark: #302b1a;      /* إسبريسو داكن - Dark Espresso */
+            --brand-primary: #613c4e;  /* خوخي داكن / بلام - Deep Plum */
+            --brand-secondary: #9fa764;/* زيتوني حكيمي / ساج - Sage Olive */
+            --brand-taupe: #816a60;    /* توب دافئ - Warm Taupe */
+            
+            --bg-card: #e4e3dc;
+            --bg-card-hover: #ecebe4;
+            --white: #ffffff;
+            --border-color: rgba(48, 43, 26, 0.15);
+            --shadow-sm: 0 4px 12px rgba(48, 43, 26, 0.05);
+            --shadow-md: 0 8px 24px rgba(48, 43, 26, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-dark);
+            font-family: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html[dir="ltr"] body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background-color: var(--brand-secondary);
+            color: var(--text-dark);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            background-color: var(--brand-secondary);
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           HEADER & ANNOUNCEMENT BAR
+           ========================================================================== */
+        .announcement-bar {
+            background-color: var(--text-dark);
+            color: var(--bg-base);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(217, 216, 208, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brand-primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .lang-select {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .cart-icon-btn {
+            position: relative;
+            padding: 0.4rem;
+            color: var(--text-dark);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: var(--brand-primary);
+            color: var(--white);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           HERO & CUTE QUOTE SECTION
+           ========================================================================== */
+        .hero {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cute-quote-box {
+            background-color: rgba(161, 167, 100, 0.15);
+            border-right: 3px solid var(--brand-secondary);
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            margin-bottom: 1.25rem;
+            font-style: italic;
+            color: var(--brand-taupe);
+            font-size: 0.95rem;
+        }
+
+        html[dir="ltr"] .cute-quote-box {
+            border-right: none;
+            border-left: 3px solid var(--brand-secondary);
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            color: var(--brand-taupe);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ==========================================================================
+           PRODUCTS GRID
+           ========================================================================== */
+        .shop-section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.25rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--brand-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* CART DRAWER */
+        .cart-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(48, 43, 26, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 200;
+            opacity: 0; visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+
+        .cart-drawer {
+            position: fixed; top: 0; right: 0;
+            width: 100%; max-width: 420px; height: 100%;
+            background-color: var(--bg-base);
+            z-index: 201;
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+            display: flex; flex-direction: column;
+        }
+
+        html[dir="rtl"] .cart-drawer { right: auto; left: 0; transform: translateX(-100%); }
+
+        .cart-overlay.active .cart-drawer { transform: translateX(0); }
+
+        .cart-header { padding: 1.25rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; }
+        .cart-body { padding: 1.5rem; overflow-y: auto; flex-grow: 1; }
+        .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); background-color: var(--bg-card); }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--bg-base);
+            padding: 3rem 0 1.5rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement with Cute Quote -->
+    <div class="announcement-bar">
+        <span>✨</span>
+        <span id="announcementText">قطع منتقاة بحب، لتعطي خزانتكِ حكاية جديدة 🕊️</span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo brand-font">Eupho Atelier</a>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="active" id="navHome">الرئيسية</a></li>
+                <li><a href="#shop" id="navShop">المتجر</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Language Selector -->
+                <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
+                    <option value="ar" selected>العربية (AR)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="en">English (EN)</option>
+                </select>
+
+                <button class="cart-icon-btn" id="openCartBtn">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="cute-quote-box" id="cuteQuote">
+                    "Every piece has a past, waiting to belong to your future." 🤍
+                </div>
+                <h1 class="brand-font" id="heroTitle">أناقة كلاسيكية وبصمة فريدة لكل قطعة</h1>
+                <p id="heroDesc">مجموعات حصرية من القطع الكلاسيكية والأزياء المصممة بعناية لمظهر يتجاوز الصيحات العابرة.</p>
+                <a href="#shop" class="btn btn-primary" id="heroBtn">
+                    استكشف المجموعة
+                </a>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" alt="Eupho Atelier">
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="brand-font" id="shopTitle">المجموعة الحالية</h2>
+                <p id="shopSubtitle">قطع منتقاة، منظفة، ومجهزة بعناية لتصلك في أفضل حلة</p>
+            </div>
+
+            <div class="products-grid" id="productsContainer">
+                <!-- Products dynamically inserted -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <h3 class="brand-font" id="cartHeaderTitle">سلة التسوق</h3>
+                <button id="closeCartBtn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="cart-body" id="cartItemsContainer">
+                <!-- Cart items -->
+            </div>
+            <div class="cart-footer">
+                <div style="display:flex; justify-style:space-between; margin-bottom:1rem; font-weight:bold;">
+                    <span id="totalText">المجموع:</span>
+                    <span id="cartTotalAmount">0 د.م.</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="alert('سيتم توجيهك للواتساب')">
+                    <i data-lucide="message-circle"></i>
+                    <span id="checkoutBtnText">طلب عبر واتساب</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="brand-font" style="font-size: 1.2rem; color: var(--brand-secondary);">EUPHO ATELIER</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">&copy; 2026 Eupho Atelier. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Multi-Language Translations Script -->
+    <script>
+        const translations = {
+            ar: {
+                dir: "rtl",
+                announcement: "قطع منتقاة بحب، لتعطي خزانتكِ حكاية جديدة 🕊️✨",
+                quote: `"كل قطعة تحمل معها حكاية، تنتظر أن تصبح جزءاً من مستقبلِك." 🤍`,
+                navHome: "الرئيسية",
+                navShop: "المتجر",
+                heroTitle: "أناقة كلاسيكية وبصمة فريدة لكل قطعة",
+                heroDesc: "مجموعات حصرية من القطع الكلاسيكية والأزياء المصممة بعناية لمظهر يتجاوز الصيحات العابرة.",
+                heroBtn: "استكشف المجموعة",
+                shopTitle: "المجموعة الحالية",
+                shopSubtitle: "قطع منتقاة، منظفة، ومجهزة بعناية لتصلك في أفضل حلة",
+                addToCart: "أضف للسلة",
+                cartTitle: "سلة التسوق",
+                total: "المجموع:",
+                checkout: "طلب عبر واتساب (الدفع عند الاستلام)",
+                emptyCart: "سلة التسوق فارغة حالياً."
+            },
+            fr: {
+                dir: "ltr",
+                announcement: "Pièces chinées avec amour, pour raconter une nouvelle histoire 🕊️✨",
+                quote: `"Chaque pièce a un passé, qui ne demande qu'à embellir votre avenir." 🤍`,
+                navHome: "Accueil",
+                navShop: "Boutique",
+                heroTitle: "Élégance intemporelle & pièces uniques",
+                heroDesc: "Des collections exclusives de pièces vintage et faites main, soigneusement sélectionnées.",
+                heroBtn: "Explorer la collection",
+                shopTitle: "Collection Actuelle",
+                shopSubtitle: "Des pièces soigneusement préparées et nettoyées avec soin.",
+                addToCart: "Ajouter au panier",
+                cartTitle: "Votre Panier",
+                total: "Total :",
+                checkout: "Commander via WhatsApp (COD)",
+                emptyCart: "Votre panier est vide pour le moment."
+            },
+            en: {
+                dir: "ltr",
+                announcement: "Curated with love, styled for your unique story 🕊️✨",
+                quote: `"Every piece has a past, waiting to belong to your future." 🤍`,
+                navHome: "Home",
+                navShop: "Shop",
+                heroTitle: "Timeless Elegance & Curated Treasures",
+                heroDesc: "Exclusive collections of vintage & handcrafted fashion, carefully curated for a timeless look.",
+                heroBtn: "Explore Collection",
+                shopTitle: "Current Collection",
+                shopSubtitle: "Handpicked, cleaned, and carefully styled pieces ready for you.",
+                addToCart: "Add to Cart",
+                cartTitle: "Your Shopping Bag",
+                total: "Total:",
+                checkout: "Order via WhatsApp (COD)",
+                emptyCart: "Your shopping bag is currently empty."
+            }
+        };
+
+        const products = [
+            { id: 1, titleAr: "حقيبة جلدية صفراء كلاسيكية", titleFr: "Sac vintage en cuir jaune", titleEn: "Classic Yellow Leather Bag", price: 220, image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, titleAr: "جاكيت جلد بني Vintage", titleFr: "Veste vintage en cuir marron", titleEn: "Vintage Brown Leather Jacket", price: 380, image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, titleAr: "حذاء بني كلاسيكي أنيق", titleFr: "Chaussures classiques marron", titleEn: "Elegant Brown Classic Shoes", price: 290, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        let currentLang = 'ar';
+        let cart = [];
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            document.documentElement.setAttribute("lang", lang);
+            document.documentElement.setAttribute("dir", t.dir);
+
+            document.getElementById('announcementText').textContent = t.announcement;
+            document.getElementById('cuteQuote').textContent = t.quote;
+            document.getElementById('navHome').textContent = t.navHome;
+            document.getElementById('navShop').textContent = t.navShop;
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroDesc').textContent = t.heroDesc;
+            document.getElementById('heroBtn').textContent = t.heroBtn;
+            document.getElementById('shopTitle').textContent = t.shopTitle;
+            document.getElementById('shopSubtitle').textContent = t.shopSubtitle;
+            document.getElementById('cartHeaderTitle').textContent = t.cartTitle;
+            document.getElementById('totalText').textContent = t.total;
+            document.getElementById('checkoutBtnText').textContent = t.checkout;
+
+            renderProducts();
+            updateCartUI();
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+            const t = translations[currentLang];
+
+            products.forEach(p => {
+                const title = currentLang === 'ar' ? p.titleAr : (currentLang === 'fr' ? p.titleFr : p.titleEn);
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${p.image}" alt="${title}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${title}</h3>
+                        <div class="product-price-row">
+                            <span style="font-weight:bold; font-size:1.1rem;">${p.price} DH</span>
+                            <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+                                <i data-lucide="plus"></i> ${t.addToCart}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function addToCart(id) {
+            const p = products.find(prod => prod.id === id);
+            if (p) { cart.push(p); updateCartUI(); openCart(); }
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').textContent = cart.length;
+            const container = document.getElementById('cartItemsContainer');
+            const t = translations[currentLang];
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--brand-taupe); margin-top:2rem;">${t.emptyCart}</p>`;
+                document.getElementById('cartTotalAmount').textContent = '0 DH';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const title = currentLang === 'ar' ? item.titleAr : (currentLang === 'fr' ? item.titleFr : item.titleEn);
+                container.innerHTML += `
+                    <div style="display:flex; gap:1rem; margin-bottom:1rem; align-items:center;">
+                        <img src="${item.image}" style="width:60px; height:60px; object-fit:cover; border-radius:4px;">
+                        <div style="flex-grow:1;">
+                            <div style="font-weight:600; font-size:0.9rem;">${title}</div>
+                            <div style="color:var(--brand-taupe); font-size:0.85rem;">${item.price} DH</div>
+                        </div>
+                        <button onclick="cart.splice(${index},1); updateCartUI();" style="color:red; font-size:0.8rem;">✕</button>
+                    </div>
+                `;
+            });
+            document.getElementById('cartTotalAmount').textContent = `${total} DH`;
+        }
+
+        function openCart() { document.getElementById('cartOverlay').classList.add('active'); }
+        function closeCart() { document.getElementById('cartOverlay').classList.remove('active'); }
+
+        document.getElementById('openCartBtn').addEventListener('click', openCart);
+        document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
